@@ -1,9 +1,26 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Thu Nov 19 12:51:18 2020
+
+@author: Ishan Jain
+"""
+
 import pandas as pd
 from ast import literal_eval
 
 
-# adding dummy start and conversion text value to visit_path based on leads_flag
 def add_start_end(df,visit_path,leads_flag):
+    """
+    Adds dummy start and conversion text value to visit_path based on leads_flag
+
+    :df: dataframe, dataframe that needs to be updated
+    :visit_path: str, name of column which contains path data
+    :leads_flag: str, name of column that has conversion flagged as 1
+
+    Returns
+    :df: dataframe, updated dataframe with start, conversion and exit values
+    """
+
     for index, row in df.iterrows():
         i = row[visit_path]
         i.insert(0, "start")
@@ -15,8 +32,16 @@ def add_start_end(df,visit_path,leads_flag):
     return df
 
 
-# returns the set of sitesections
 def get_unique_points(df, visit_path):
+    """
+    Returns the set of sitesections.
+
+    :df: dataframe, dataframe that has path
+    :visit_path: str, name of column which contains path data
+    
+    Returns
+    :x: set, unique values of sitesections in complete dataframe
+    """
     tmp = df[[visit_path]]
     complete_sitesections = []
     for index, rows in tmp.iterrows():
@@ -29,6 +54,16 @@ def get_unique_points(df, visit_path):
 
 # transition probability
 def transition_probability(df, visit_path):
+    """
+    To find the transition probability.
+
+    :df: dataframe, dataframe that has path
+    :visit_path: str, name of column which contains path data
+    
+    Returns
+    :transition_df: dataframe, dataframe that contrains the transition probability
+    """
+
     # taking all the unique sitesections to variable x
     x = get_unique_points(df, visit_path) 
 
@@ -48,7 +83,8 @@ def transition_probability(df, visit_path):
     for index, row in transition_df.iterrows():
         path_in_string = "'" + row['from_sitesection'] + "', '" + row['to_sitesection'] + "'"
         transition_df.at[index, 'path_string'] = path_in_string
-        # creating a string by adding a comma(,) to the from_sitesection value so that we can identify if it's not the last element in path
+        # creating a string by adding a comma(,) to the from_sitesection value
+        # so that we can identify if it's not the last element in path
         denominator = "'" + row['from_sitesection'] + "', '"
         transition_df.at[index, 'string_for_denominator'] = denominator
 
@@ -73,9 +109,19 @@ def transition_probability(df, visit_path):
     del transition_df['string_for_denominator']
     return transition_df
 
-    
-# finding path probability
+
+
 def path_probability(df, visit_path, transition_df):
+    """
+    To find the path probability.
+
+    :df: dataframe, dataframe that has path column
+    :visit_path: str, name of column which contains path data
+    :transition_df: dataframe, dataframe that contrains the transition probability
+
+    Returns
+    :path_probability_df: dataframe, dataframe that contains probability of paths
+    """
     path_probability_df = df.copy()
     for index, rows in path_probability_df.iterrows():
         path = rows[visit_path]
@@ -88,8 +134,17 @@ def path_probability(df, visit_path, transition_df):
 
 
 
-# finding state probability dataframe
 def state_probability(df, visit_path):
+    """
+    To find the state probability.
+
+    :df: dataframe, dataframe that has path column
+    :visit_path: str, name of column which contains path data
+
+    Returns
+    :state_probability: dataframe, dataframe that contains probability of being on a state
+    """
+
     # taking all the unique sitesections to variable x
     x = get_unique_points(df, visit_path) 
     state_probability = {}
@@ -101,11 +156,29 @@ def state_probability(df, visit_path):
 
 
 def convert_to_list(df, visit_path):
+    """
+    To convert the path column to list type.
+
+    :df: dataframe, dataframe that has path column
+    :visit_path: str, name of column which contains path data
+
+    Returns
+    :df: dataframe, dataframe that contains path column as list type
+    """
     df[visit_path] = df[visit_path].apply(literal_eval)
     return df
 
 
+
 def convert_to_str(df, visit_path):
+    """
+    To convert the path column to string type.
+
+    :df: dataframe, dataframe that has path column
+    :visit_path: str, name of column which contains path data
+
+    Returns
+    :df: dataframe, dataframe that contains path column as string type
+    """
     df[visit_path] = df[visit_path].astype(str)
     return df
-
