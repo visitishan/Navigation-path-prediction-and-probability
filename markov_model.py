@@ -49,10 +49,10 @@ def get_unique_points(df, visit_path):
         for item in list(ss_list):
             complete_sitesections.append(item)
     x = set(complete_sitesections)
-    return x
+    return x, complete_sitesections
 
 
-# transition probability
+
 def transition_probability(df, visit_path):
     """
     To find the transition probability.
@@ -65,7 +65,7 @@ def transition_probability(df, visit_path):
     """
 
     # taking all the unique sitesections to variable x
-    x = get_unique_points(df, visit_path) 
+    x, complete_sitesections = get_unique_points(df, visit_path) 
 
     # creating dummy df for transition probability
     transition_df = []
@@ -146,7 +146,7 @@ def state_probability(df, visit_path):
     """
 
     # taking all the unique sitesections to variable x
-    x = get_unique_points(df, visit_path) 
+    x, complete_sitesections = get_unique_points(df, visit_path) 
     state_probability = {}
     for i in x:
         state_probability.update({i:complete_sitesections.count(i)/len(complete_sitesections)})
