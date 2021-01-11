@@ -1,7 +1,27 @@
-# Web Navigation Path Pattern Prediction
-A library to find the Web Navigation Path Pattern Prediction.
+# Navigation Path Probability Estimation and Pattern Prediction
+[![Build Status](https://img.shields.io/badge/build-passed-brightgreen.svg)]() [![Build Status](https://img.shields.io/cran/l/devtools.svg)]() [![Build Status](https://img.shields.io/badge/release-v1.0.0-green.svg)]() [![Build Status](https://img.shields.io/conda/pn/conda-forge/python.svg?maxAge=2592000)]() [![Build Status](https://img.shields.io/pypi/pyversions/Django.svg?maxAge=2592000)]()
 
-# How to use -
+A library to find the Probability Estimation of Navigation Paths and their Pattern Prediction.
+
+The library helps in identifying the high probability trail path in a data. This navigation probability provides the means to analyze and predict the next link choice of unseen navigation sessions. Currently, the library allows three types of probability estimation from the path data -
+- State Probability
+- Transition Probability
+- Path or Trail Probability
+
+#### State Probability -
+The initial probability of a state is estimated as the proportion of times the corresponding state was requested by the user. This probability is obtained by dividing the number of times a state was browsed by the total number of states browsed.
+
+#### Transition Probability -
+The probability of a transition between two states is estimated by the ratio of the number of times the sequence was visited to
+the number of total paths where the from page was visited.
+
+#### Path or Trail Probability -
+The probability of a trail is estimated by the product of the initial probability of the first state in the trail and the transition probabilities of the next transitions taken in a path. The chain rule is applied in order to compute all path probabilities.
+
+
+## How to use -
+
+For the probability estimations
 ```
 import pandas as pd
 import markov_model as mm
@@ -105,7 +125,6 @@ print(path_df)
 2           5  [start, A, C, B, A, D, conversion]            1          0.024691
 
 ```
-
 
 
 ## Additional functions -
