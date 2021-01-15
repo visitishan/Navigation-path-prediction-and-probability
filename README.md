@@ -24,7 +24,7 @@ The probability of a trail is estimated by the product of the initial probabilit
 For the probability estimations
 ```
 import pandas as pd
-import markov_model as mm
+import path_nav as nv
 
 data = {
 	"other_data": [1,4,5],
@@ -51,7 +51,7 @@ print(df)
 
 ```
 # To find the state probability
-state_probability = mm.state_probability(df, 'path')
+state_probability = nv.state_probability(df, 'path')
 print(state_probability)
 ```
 ```
@@ -65,7 +65,7 @@ print(state_probability)
 
 ```
 # To add the start and conversion values to the path (optional)
-df = mm.add_start_end(df,'path','conversions')
+df = nv.add_start_end(df,'path','conversions')
 print(df)
 ```
 ```
@@ -78,7 +78,7 @@ print(df)
 
 ```
 # To find the transition probability
-transition_df = mm.transition_probability(df, 'path')
+transition_df = nv.transition_probability(df, 'path')
 print(transition_df)
 ```
 ```
@@ -115,7 +115,7 @@ from_sitesection to_sitesection  transition_probability
 
 ```
 # To find the path probability
-path_df = mm.path_probability(df, 'path', transition_df)
+path_df = nv.path_probability(df, 'path', transition_df)
 print(path_df)
 ```
 ```
@@ -131,9 +131,9 @@ print(path_df)
 
 ```
 # To convert the path column to string data type
-df = convert_to_str(df, "path")
+df = nv.convert_to_str(df, "path")
 
 
 # To convert the path column to list data type
-df = convert_to_list(df, "path")
+df = nv.convert_to_list(df, "path")
 ```
