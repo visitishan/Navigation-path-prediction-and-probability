@@ -1,11 +1,14 @@
 # markovpath
 
-[![PyPI version](https://img.shields.io/pypi/v/markovpath.svg)](https://pypi.org/project/markovpath/)
-[![Python Versions](https://img.shields.io/pypi/pyversions/markovpath.svg)](https://pypi.org/project/markovpath/)
+[![PyPI version](https://badge.fury.io/py/markovpath.svg)](https://pypi.org/project/markovpath/)
+[![PyPI - Status](https://img.shields.io/badge/pypi-available-brightgreen?logo=pypi)](https://pypi.org/project/markovpath/)
+[![Python Versions](https://img.shields.io/badge/python-3.8%20%7C%203.9%20%7C%203.10%20%7C%203.11%20%7C%203.12-blue?logo=python)](https://pypi.org/project/markovpath/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Build Status](https://img.shields.io/badge/tests-passing-brightgreen.svg)]()
+[![Tests](https://img.shields.io/badge/tests-10%20passed-brightgreen.svg)]()
 
 > A high-performance Python library for **sequence probability estimation**, **next-state prediction**, **Markov attribution modeling**, and **AI agent trajectory analysis** using Discrete-Time Markov Chains (DTMC).
+
+`markovpath` is officially published and available on [PyPI (Python Package Index)](https://pypi.org/project/markovpath/).
 
 Rooted in peer-reviewed Web Usage Mining research ([Sarukkai, 2000](https://doi.org/10.1016/S1389-1286(00)00044-X)), `markovpath` provides a clean, vectorized, Scikit-learn-style API to model user navigation sessions, clickstreams, or AI decision traces.
 
@@ -38,10 +41,19 @@ Rooted in peer-reviewed Web Usage Mining research ([Sarukkai, 2000](https://doi.
 
 ---
 
-## 📦 Installation
+## 📦 Installation & PyPI Availability
+
+The library is officially available on **PyPI**: 👉 **[https://pypi.org/project/markovpath/](https://pypi.org/project/markovpath/)**
+
+Install it directly via `pip`:
 
 ```bash
 pip install markovpath
+```
+
+To install or upgrade to the latest release:
+```bash
+pip install markovpath --upgrade
 ```
 
 *Requirements: Python >= 3.8, NumPy >= 1.20, Pandas >= 1.3*
