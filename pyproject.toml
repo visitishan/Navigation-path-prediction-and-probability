@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "markovpath"
-version = "2.0.1"
+version = "2.0.2"
 description = "Fast, production-ready Markov Chain library for navigation path prediction, trail likelihood estimation, AI agent trajectory modeling, and attribution."
 readme = "README.md"
 authors = [

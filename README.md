@@ -13,7 +13,7 @@
 Rooted in peer-reviewed Web Usage Mining research ([Sarukkai, 2000](https://doi.org/10.1016/S1389-1286(00)00044-X)), `markovpath` provides a clean, vectorized, Scikit-learn-style API to model user navigation sessions, clickstreams, or AI decision traces.
 
 <p align="center">
-  <img src="assets/markov_user_path_flow.jpg" alt="Markov Navigation Path Prediction and User Trail Flow" width="95%" />
+  <img src="https://raw.githubusercontent.com/visitishan/Navigation-path-prediction-and-probability/main/assets/markov_user_path_flow.jpg" alt="Markov Navigation Path Prediction and User Trail Flow" width="95%" />
 </p>
 
 ---
